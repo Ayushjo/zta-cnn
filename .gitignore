@@ -1,0 +1,14 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Generated, reproducible with make
+build/
+artifacts/*_preds.npz
+artifacts/*.log
+web/src/data/*.json
+
+# OS
+.DS_Store
