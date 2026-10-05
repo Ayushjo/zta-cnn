@@ -1,0 +1,41 @@
+// On-board golden test for the CIFAR-10 model. Add to SW/src/test.cpp and call from
+// the unit-test list. Model/label/BMP/BIN files must be reachable through fopen()
+// (add them to SW/fs/bin2c.py + SW/base/newlib.c, or put them on the SD card).
+void test_cifar10()
+{
+   static const char *bmp[] = { "cifar10_input_0.bmp", "cifar10_input_1.bmp", "cifar10_input_2.bmp", "cifar10_input_3.bmp", "cifar10_input_4.bmp", "cifar10_input_5.bmp", "cifar10_input_6.bmp", "cifar10_input_7.bmp", "cifar10_input_8.bmp", "cifar10_input_9.bmp" };
+   static const char *bin[] = { "cifar10_expected_0.bin", "cifar10_expected_1.bin", "cifar10_expected_2.bin", "cifar10_expected_3.bin", "cifar10_expected_4.bin", "cifar10_expected_5.bin", "cifar10_expected_6.bin", "cifar10_expected_7.bin", "cifar10_expected_8.bin", "cifar10_expected_9.bin" };
+   for(int k=0;k < 10;k++) {
+      TENSOR input;
+      TENSOR output;
+      Graph graph;
+      TfliteNn nn;
+      ZtaStatus rc=input.CreateWithBitmap(bmp[k]);
+      assert(rc==ZtaStatusOk);
+      nn.Create("cifar10_zta.tflite",&input,1,&output);
+      graph.Add(&nn);
+      graph.Verify();
+      FLUSH_DATA_CACHE();
+      graph.Prepare();
+      uint32_t t0=TimeGet();
+      graph.RunUntilCompletion();
+      uint32_t t1=TimeGet();
+      FLUSH_DATA_CACHE();
+      size_t size=output.GetBufLen();          // 10 bytes
+      uint8_t expect[16];
+      FILE *fp=fopen(bin[k],"rb");
+      assert(fp && fread(expect,1,size,fp)==size);
+      fclose(fp);
+      uint8_t *got=(uint8_t *)output.GetBuf();
+      int maxdiff=0;
+      for(size_t i=0;i < size;i++) {
+         int d=(int)got[i]-(int)expect[i];
+         if(d<0) d=-d;
+         if(d>maxdiff) maxdiff=d;
+      }
+      int top5[5];
+      NeuralNet::GetTop5(got,size,top5);
+      printf("cifar10 vector %d: top1=%d maxdiff=%d time=%d\n",k,top5[0],maxdiff,(int)(t1-t0));
+      nn.Unload();
+   }
+}
