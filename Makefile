@@ -2,7 +2,7 @@ RUN = PYTHONWARNINGS=ignore uv run python -m
 
 PAGES_BASE ?= /zta-cnn/
 
-.PHONY: pages-build setup test train quantize check eval figures explain robustness export demo all clean web web-install web-build web-dev
+.PHONY: pages-build pages-deploy setup test train quantize check eval figures explain robustness export demo all clean web web-install web-build web-dev
 
 PORT ?= 8411
 
@@ -58,6 +58,9 @@ pages-build:      ## static copy for GitHub Pages in build/site (precomputed API
 	cp -R build/static/static-api build/static/figures build/site/
 	cp build/site/index.html build/site/404.html
 	touch build/site/.nojekyll
+
+pages-deploy: pages-build   ## publish build/site to the gh-pages branch
+	cd build/site && rm -rf .git && git init -q -b gh-pages && git add -A && git commit -q -m "Publish site" && git push -q -f $$(cd ../.. && git remote get-url origin) gh-pages
 
 web-dev:          ## backend with reload + Vite dev server (http://localhost:5173)
 	PYTHONWARNINGS=ignore TF_CPP_MIN_LOG_LEVEL=3 uv run uvicorn server.app:app --port $(PORT) --reload & cd web && pnpm dev

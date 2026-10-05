@@ -69,6 +69,12 @@ The trained models and results are committed, so the site works straight away.
 make train quantize eval explain robustness figures export
 ```
 
+**Publishing the website** (static copy on GitHub Pages):
+
+```bash
+make pages-deploy
+```
+
 **Checking any TFLite model against ztachip:**
 
 ```bash
