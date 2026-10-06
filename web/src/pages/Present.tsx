@@ -162,7 +162,7 @@ function useSlides() {
     },
     {
       kicker: 'Tool · live', title: 'The compatibility checker, run on TensorFlow’s default export',
-      node: <div className="h-[560px] overflow-auto pr-2 [zoom:1.25]"><CheckerView initial={`${dm}_int8_pc`} compact /></div>,
+      node: <div className="h-[486px] overflow-auto pr-2 [zoom:1.15]"><CheckerView initial={`${dm}_int8_pc`} compact /></div>,
     },
     {
       kicker: 'Results', title: `${acc} on CIFAR-10 in the format ztachip runs`,
@@ -191,7 +191,7 @@ function useSlides() {
     },
     {
       kicker: 'Live demo', title: 'FP32 next to the exact uint8 ztachip model',
-      node: <div className="h-[580px] overflow-auto [zoom:1.2]"><DemoPanel compact autoRun /></div>,
+      node: <div className="h-[508px] overflow-auto [zoom:1.1]"><DemoPanel compact autoRun /></div>,
     },
     {
       kicker: 'Phase II · December', title: 'Deploying on the ZedBoard',
