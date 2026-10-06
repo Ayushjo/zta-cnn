@@ -1,0 +1,1 @@
+[{"file":"SW/base/newlib.c","start":115,"highlight":[119,124],"lines":["// Is file console output","","int _isatty(int file) {","    return (file == STDOUT_FILENO || file == STDERR_FILENO);","}","","void _exit(int code) {","    for(;;) {}","}","","// Allocate memory block from heap","","void *_sbrk (int nbytes) {","   void *p;"]}]

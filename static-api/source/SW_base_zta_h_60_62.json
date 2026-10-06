@@ -1,0 +1,1 @@
+[{"file":"SW/base/zta.h","start":56,"highlight":[60,62],"lines":["#define TID_MAX  (1<<TID_DEPTH)","","// Max vector width 0=1,1=2,2=4","","#define VECTOR_DEPTH  3","","#define VECTOR_WIDTH  (1<<VECTOR_DEPTH)","","// Number of address bits to access the register space","","#define REGISTER_DEPTH  (5+VECTOR_DEPTH)"]}]

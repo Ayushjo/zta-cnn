@@ -1,0 +1,1 @@
+[{"file":"SW/apps/nn/nn.cpp","start":79,"highlight":[83,83],"lines":["      default:","         assert(0);","   }","   m_operators.push_back(layer);","   assert(layerId==((int)m_operators.size()-1));","   return layer;","}","","// Model loading begins by derived class"]}]
