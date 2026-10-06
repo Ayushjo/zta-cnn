@@ -2,7 +2,7 @@
 
 **A CIFAR-10 image classifier co-designed to run on [ztachip](https://github.com/ztachip/ztachip), an open-source RISC-V AI accelerator for FPGAs, plus the toolchain that proves a model will run on it before it reaches the board.**
 
-Minor project (ECE), Phase I: software. Phase II, deployment on a ZedBoard, follows in December 2026.
+Minor project, "FPGA-Based AI Accelerator for Real-Time Image Classification" (IIIT Naya Raipur, ECE, Semester 5), Phase I: software. Phase II, deployment on a ZedBoard, follows in December 2026.
 
 **Live site:** https://ayushjo.github.io/zta-cnn/ (results, checker and a precomputed demo; the webcam demo runs locally)
 
@@ -111,11 +111,15 @@ Details are in [`docs/architecture.md`](docs/architecture.md).
 
 ## Team
 
-- *Name 1*
-- *Name 2*
-- *Name 3*
+Group 24, Semester 5, Department of ECE, IIIT Naya Raipur
 
-Guide: *Name*
+| Name | Roll number |
+|---|---|
+| Ayush Singh | 241010215 |
+| Swastik Yadav | 241010274 |
+| Shivam Tiwari | 241010267 |
+
+Supervisor: Dr. Abhishek Sharma
 
 ## Credits
 

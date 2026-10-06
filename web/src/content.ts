@@ -1,9 +1,9 @@
 // Edit these before the presentation.
 export const PROJECT = {
-  title: 'Hardware-Aware CNN Design and Deployment Toolchain for an Open-Source FPGA AI Accelerator',
+  title: 'FPGA-Based AI Accelerator for Real-Time Image Classification',
   short: 'ZTA-CNN',
-  team: ['Team member 1', 'Team member 2', 'Team member 3'],
-  guide: 'Project guide',
-  institute: 'Department of Electronics & Communication Engineering',
+  team: ['Ayush Singh (241010215)', 'Swastik Yadav (241010274)', 'Shivam Tiwari (241010267)'],
+  guide: 'Dr. Abhishek Sharma',
+  institute: 'Dept. of ECE, IIIT Naya Raipur · Semester 5 · Group 24',
   date: '6 October 2026',
 }
